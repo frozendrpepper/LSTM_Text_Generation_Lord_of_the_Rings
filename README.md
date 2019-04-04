@@ -1,5 +1,5 @@
-![Alt text](https://github.com/frozendrpepper/LSTM_Text_Generation_Lord_of_the_Rings/blob/master/final_result.png)
-(Source: OpenFace Github Repository)
+
+
 
 # Text Generation Using Stacked LSTM with Lord of the Rings
 
@@ -9,34 +9,25 @@ easier assessment of the results (In terms of analyzing overfitting and grammati
 
 ## Pipeline Summary
 
-1) Face Detection using Object Detection
- * I've used Tensorflow API's built in inception model. This model had better accuracy than the mobilenet model which is the lightest
-   model that is provided.
-   [Tensorflow API Built In Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md)
-   
-2) Face Recognition Deep Nueral Network
- * The basic idea of how face recognition NN works can be seen as follows:
- ![alt text](https://i.ytimg.com/vi/6jfw8MuKwpI/maxresdefault.jpg)
- (Source: Coursera Deeplearning.ai lecture on Siamese Network)
- * The idea is to utilize a pre-trained deep learning model that has been specifically trained to recognize different faces. The output of the deep learning architecture a 128 dimensional vector that represents an encoding of a face image. A distance metric is used to compare different faces and if the distance falls within a certain range, we have matching faces.
- * For this project, the source code provided from Coursera's Deeplearning.ai is used. However, I took out all unnecessary parts 
- and heavily modified the code so as to not give away solution (The course does not want people who have taken the course to 
- release some of the codes since they are solutions to the exercise problems and can cause honor code issue)
+
 
 
 ## Result
 
-You can see in the main Jupyter Notebook file that the model does an excellent job at detecting all faces in the images
-and also recognize my face apart from other faces
+![Alt text](https://github.com/frozendrpepper/LSTM_Text_Generation_Lord_of_the_Rings/blob/master/final_result.png)
+
+If parts of the sentences are from the same passage in the original text, they are highlighted with the same color.
+As you can see, three layer model was able to generate a much more stable/complex sentence without overfitting to the dataset.
+This overfitting is happening partially due to the fact the dataset used here is relatively small (We had to use a smaller dataset
+in the interest of finishing the project and demonstrating).
+
+Unlike typical supervised learning models, it is a bad idea to judge the performance of your model based on accuracy because
+higher accuracy means the model is overfitting more and more to the training dataset. 
  
 ## Suggestions
 
-I have implemented this on my personal hardware (7th Gen core i7 and GTX 1060 6GB) with a built in camera. The frame rate isn't
-the greatest but the model can run at an acceptable frame rate and detect faces (and recognize my own face). OpenCV has built in
-methods that can automatcally detect any connected camera to your hardware, input a live stream video and return each frame
-as individual image represented as array. 
-
-Additionally, OpenCV has its own face recognition module built into it that uses slightly different approach. This could be a potential future project to compare the performance of different face recognition approaches.
+We could not find a good numeric value that could be assessed with each epoch in our training steps to analyze what would be the 
+optimal number of epochs. In fact, the judgment came from trying incremental number of epochs and judging 
 
 ## Useful References
 
